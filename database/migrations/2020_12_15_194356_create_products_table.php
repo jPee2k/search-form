@@ -17,8 +17,14 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('model');
-            $table->decimal('price', 8, 2);
+            $table->integer('rating')->default(0); // 1 - 10
+            $table->bigInteger('view')->default(0); // counter
+            $table->decimal('price', 8, 2)->nullable();
+            $table->string('availability')->nullable(); // null == not available
             $table->text('description')->nullable();
+            $table->string('photo');
+            $table->foreignId('brand_id')->constrained()->onDelete('cascade');
+            $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
