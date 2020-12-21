@@ -9,8 +9,6 @@
     </title>
 </head>
 <body>
-    @include('filter')
-
     @yield('content')
 </body>
 </html>
