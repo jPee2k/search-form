@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
 use App\Models\Product;
 use App\Models\Category;
+use App\Custom\Filters\ProductsFilter;
 use Illuminate\Http\Request;
 
 class CatalogController extends Controller
@@ -13,11 +15,21 @@ class CatalogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::paginate();
+        $products = Product::with('category')->with('brand');
 
-        return view('product.index', compact('products'));
+        $filters = new ProductsFilter($products, $request);
+        $products = $filters->apply()->get();
+
+        return view(
+            'product.index',
+            [
+                'products' => $products,
+                'categories' => Category::all(),
+                'brands' => Brand::all()
+            ]
+        );
     }
 
     /**
