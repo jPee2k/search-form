@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ProductFactory extends Factory
 {
+    private const WORDS = ['kyiv', 'chernihiv'];
+
     /**
      * The name of the factory's corresponding model.
      *
@@ -23,7 +25,7 @@ class ProductFactory extends Factory
      */
     public function definition()
     {
-        $storage = array_merge($this->faker->words(2), [null]);
+        $storage = array_merge(self::WORDS, [null]);
 
         return [
             'name' => $this->faker->word,
