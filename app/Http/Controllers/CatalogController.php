@@ -20,7 +20,9 @@ class CatalogController extends Controller
         $products = Product::with('category')->with('brand');
 
         $filters = new ProductsFilter($products, $request);
-        $products = $filters->apply()->get();
+        $products = $filters->apply()->paginate(5);
+
+        $request->flash();
 
         return view(
             'product.index',

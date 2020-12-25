@@ -23,4 +23,5 @@
         @endforeach
 
     </main>
+    {{ $products->onEachSide(1)->appends(old())->links() }}
 @endsection
