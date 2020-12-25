@@ -42,14 +42,11 @@ class ProductsFilter
         return $this->request->all();
     }
 
-    // todo -> repair search by name with other filters
-    
-    // public function search($value)
-    // {
-    //     $this->builder
-    //         ->where('name', 'like', "%{$value}%")
-    //         ->orWhere('description', 'like', "%{$value}%");
-    // }
+    public function search($value)
+    {
+        $this->builder
+            ->where('name', 'like', "%{$value}%");
+    }
 
     public function sort($value)
     {
@@ -80,12 +77,16 @@ class ProductsFilter
 
     public function min($value)
     {
+        $value = $value ?? 0;
+
         $this->builder
             ->Where('price', '>=', $value);
     }
 
     public function max($value)
     {
+        $value = $value ?? 999999;
+
         $this->builder
             ->Where('price', '<=', $value);
     }
