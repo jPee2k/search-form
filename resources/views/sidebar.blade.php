@@ -1,11 +1,10 @@
-<aside class="sidebar">
+<aside class="sidebar mt-2">
     {{ Form::open(['url' => route('index'), 'method' => 'GET']) }}
     <div>
-        <h4 class="h5">
-            <label>
-                {{ Form::search('search', null, ['placeholder' => 'search...']) }}
-                {{ Form::submit('Search', ['class' => 'btn btn-secondary mt-2', 'role' => 'button']) }}
-            </label>
+        <label class="col-12">
+            {{ Form::search('search', null, ['placeholder' => 'search...', 'autocomplate' => 'off', 'class' => 'w-100 rounded']) }}
+            {{ Form::submit('Search', ['class' => 'btn btn-primary mt-2 w-100', 'role' => 'button']) }}
+        </label>
     </div>
     <div>
         <h4 class="h5 text-center">Sort by</h4>
@@ -20,7 +19,7 @@
                 'rating_desc' => 'Rating',
             ],
             null,
-            ['placeholder' => 'Pick a sort method', 'class' => 'ml-5'],
+            ['placeholder' => 'Pick a sort method', 'class' => 'col-12'],
         ) }}
     </div>
     <div>
@@ -43,11 +42,11 @@
     </div>
     <div>
         <h4 class="h5 text-center">Price between</h4>
-        <label class="ml-3">
-            {{ Form::number('min', 0) }}<br />
-            {{ Form::number('max', 999999) }}
+        <label>
+            {{ Form::number('min', 0, ['class' => 'col-12']) }}
+            {{ Form::number('max', 999999, ['class' => 'col-12 mt-2 mb-3']) }}
         </label><br />
     </div>
-
+    
     {{ Form::close() }}
 </aside>

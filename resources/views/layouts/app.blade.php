@@ -24,10 +24,10 @@
 <body>
 
     <div class="container">
-        <div class="row mt-5">
+        <div class="row m-2">
 
             <!-- Sidebar -->
-            <div class="col-3">
+            <div class="col-md-3">
                 @include('sidebar')
             </div>
             <!-- / Sidebar -->

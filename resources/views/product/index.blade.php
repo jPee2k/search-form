@@ -2,10 +2,11 @@
 
 @section('title', 'Products')
 @section('content')
-    <main class="content d-flex flex-wrap justify-content-around">
+    <main class="content">
+        <div class="mt-2 mb-2 h3 text-center border border-primary rounded">{{ $products->total() }} hits</div>
 
         @foreach ($products as $product)
-            <section class="product mb-3 mr-3 p-3">
+            <section class="product border border-primary rounded mb-3 p-3">
                 <b>id:</b> {{ $product->id }}<br />
                 <b>name:</b> {{ $product->name }}<br />
                 <b>model:</b> {{ $product->model }}<br />
